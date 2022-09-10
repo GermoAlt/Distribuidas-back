@@ -1,6 +1,9 @@
-package com.uade.morfando.model;
+package com.uade.morfando.entity;
 
-public class UsuarioClienteModel {
+import org.springframework.data.annotation.Id;
+
+public class Cliente {
+    @Id
     private int Id;
     private String username;
     private String nombre;
