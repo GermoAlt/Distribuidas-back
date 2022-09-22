@@ -2,6 +2,8 @@ package com.uade.morfando.entity;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 public class Cliente {
     @Id
     private int Id;
@@ -10,6 +12,15 @@ public class Cliente {
     private String apellido;
     private String email;
     private String telefono;
+    private List<Restaurante> restaurantesFavoritos;
+
+    public List<Restaurante> getRestaurantesFavoritos() {
+        return restaurantesFavoritos;
+    }
+
+    public void setRestaurantesFavoritos(List<Restaurante> restaurantesFavoritos) {
+        this.restaurantesFavoritos = restaurantesFavoritos;
+    }
 
     public int getId() {
         return Id;

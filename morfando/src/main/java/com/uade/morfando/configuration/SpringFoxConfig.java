@@ -18,7 +18,8 @@ class SpringFoxConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.uade.morfando.controllers"))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .useDefaultResponseMessages(false);
     }
 
 

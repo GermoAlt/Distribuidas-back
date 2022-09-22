@@ -1,6 +1,5 @@
 package com.uade.morfando.controllers;
 
-import com.uade.morfando.entity.Cliente;
 import com.uade.morfando.entity.Propietario;
 import com.uade.morfando.model.ResponseModel;
 import com.uade.morfando.services.PropietariosService;
@@ -24,18 +23,22 @@ public class PropietariosController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
+            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
     public ResponseModel login(@RequestBody Propietario propietario) {
-        return null;
+        return new ResponseModel(HttpStatus.OK.value(),propietario);
     }
 
     @PostMapping("/reset")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseModel.class))),
+            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
@@ -50,39 +53,46 @@ public class PropietariosController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
+            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public Propietario newPropietario (@RequestBody Propietario propietario) {
-            return new Propietario();
+    public ResponseModel newPropietario (@RequestBody Propietario propietario) {
+        return new ResponseModel(HttpStatus.OK.value(),propietario);
     }
 
     @GetMapping("/")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
+            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public Propietario getPropietario (@RequestParam String idUser) {
-        return new Propietario();
+    public ResponseModel getPropietario (@RequestParam String idUser) {
+        Propietario propietario = new Propietario();
+        return new ResponseModel(HttpStatus.OK.value(),propietario);
     }
 
     @PutMapping("/")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
+            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public Propietario updatePropietario (@RequestBody Propietario propietario) {
-        return new Propietario();
+    public ResponseModel updatePropietario (@RequestBody Propietario propietario) {
+        return new ResponseModel(HttpStatus.OK.value(),propietario);
     }
 }
 //alta usuario, alta dueño, alta resto, modificacion resto, baja logica resto
