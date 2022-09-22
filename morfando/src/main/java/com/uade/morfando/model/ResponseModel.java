@@ -11,10 +11,28 @@ public class ResponseModel {
     private int code;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Cliente cliente;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Object data;
 
-    public ResponseModel(int code, Cliente cliente) {
+
+        public ResponseModel(int code, Object obj) {
         this.code = code;
-        this.cliente = cliente;
+        this.data = obj;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
 }

@@ -3,11 +3,7 @@ package com.uade.morfando.controllers;
 import com.uade.morfando.entity.Cliente;
 import com.uade.morfando.entity.Propietario;
 import com.uade.morfando.model.ResponseModel;
-import com.uade.morfando.model.SpringErrorPayload;
-import com.uade.morfando.services.ClientesService;
-import io.swagger.annotations.ApiOperation;
-
-import io.swagger.v3.oas.annotations.Operation;
+import com.uade.morfando.services.PropietariosService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,11 +14,11 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("morfando/cliente")
-public class ClientesController {
+@RequestMapping("morfando/propietario")
+public class PropietariosController {
 
     @Autowired
-    private ClientesService clientesService;
+    private PropietariosService propietariosService;
 
     @PostMapping("/login")
     @ApiResponses(value = {
@@ -33,8 +29,8 @@ public class ClientesController {
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public ResponseModel login(@RequestBody Cliente cliente) {
-            return new ResponseModel(HttpStatus.CREATED.value(),cliente);
+    public ResponseModel login(@RequestBody Propietario propietario) {
+        return null;
     }
 
     @PostMapping("/reset")
@@ -46,8 +42,8 @@ public class ClientesController {
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public ResponseModel resetPassword(@RequestBody Cliente cliente) {
-        return new ResponseModel(HttpStatus.CREATED.value(),cliente);
+    public ResponseModel resetPassword(@RequestBody Propietario propietario) {
+        return new ResponseModel(HttpStatus.CREATED.value(),propietario);
     }
 
     @PostMapping("/")
@@ -59,8 +55,8 @@ public class ClientesController {
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public ResponseModel nuevoCliente (@RequestBody Cliente cliente) {
-        return new ResponseModel(HttpStatus.CREATED.value(),cliente);
+    public Propietario newPropietario (@RequestBody Propietario propietario) {
+            return new Propietario();
     }
 
     @GetMapping("/")
@@ -72,10 +68,9 @@ public class ClientesController {
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public ResponseModel getCliente (@RequestBody Cliente cliente) {
-        return new ResponseModel(HttpStatus.CREATED.value(),cliente);
+    public Propietario getPropietario (@RequestParam String idUser) {
+        return new Propietario();
     }
-
 
     @PutMapping("/")
     @ApiResponses(value = {
@@ -86,9 +81,8 @@ public class ClientesController {
             @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class)))
     })
-    public ResponseModel updateCliente (@RequestBody Cliente cliente) {
-        return new ResponseModel(HttpStatus.CREATED.value(),cliente);
+    public Propietario updatePropietario (@RequestBody Propietario propietario) {
+        return new Propietario();
     }
-
 }
 //alta usuario, alta dueño, alta resto, modificacion resto, baja logica resto
