@@ -21,7 +21,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("morfando/cliente")
+@RequestMapping("morfando/v1/customers")
 public class ClientesController {
 
     @Autowired
@@ -103,7 +103,7 @@ public class ClientesController {
         return new ResponseModel(HttpStatus.CREATED.value(),cliente);
     }
 
-    @PatchMapping("/favoritos")
+    @PatchMapping("/favorites")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),
@@ -118,7 +118,7 @@ public class ClientesController {
         return new ResponseModel(HttpStatus.CREATED.value(),idRestaurantes);
     }
 
-    @GetMapping("/favoritos")
+    @GetMapping("/favorites")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ResponseModel.class))),

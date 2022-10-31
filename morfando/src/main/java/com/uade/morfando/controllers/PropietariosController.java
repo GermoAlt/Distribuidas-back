@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("morfando/propietario")
+@RequestMapping("morfando/v1/owners")
 public class PropietariosController {
 
     @Autowired
