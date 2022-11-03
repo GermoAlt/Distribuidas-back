@@ -1,12 +1,15 @@
-package com.uade.morfando.entity;
+package com.uade.morfando.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+@Document("restaurants")
 public class Restaurante {
     @Id
-    private int id;
+    private String id;
     private String nombre;
     private String calle;
     private int  numero;
@@ -14,7 +17,7 @@ public class Restaurante {
     private String localidad;
     private String provincia;
     private String pais;
-    private List<Long> geolocalizacion;
+    private GeoJsonPoint geolocalizacion;
     private String horarioApertura;
     private String horarioCierre;
     private Boolean activo;
@@ -24,13 +27,22 @@ public class Restaurante {
     private int cantidadEstrellas;
     private List <Comentario> comentarios;
     private Menu menu;
+    private String idPropietario;
 
 
-    public int getId() {
+    public String getIdPropietario() {
+        return idPropietario;
+    }
+
+    public void setIdPropietario(String idPropietario) {
+        this.idPropietario = idPropietario;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -90,11 +102,11 @@ public class Restaurante {
         this.pais = pais;
     }
 
-    public List<Long> getGeolocalizacion() {
+    public GeoJsonPoint getGeolocalizacion() {
         return geolocalizacion;
     }
 
-    public void setGeolocalizacion(List<Long> geolocalizacion) {
+    public void setGeolocalizacion(GeoJsonPoint geolocalizacion) {
         this.geolocalizacion = geolocalizacion;
     }
 

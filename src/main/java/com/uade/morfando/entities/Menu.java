@@ -1,20 +1,27 @@
-package com.uade.morfando.entity;
+package com.uade.morfando.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
+@Document("menus")
 public class Menu {
     @Id
-    private int id;
+    private String id;
+    @NotBlank
     private String categoria;
+    @NotBlank
     private List<Plato> plato;
+    @NotBlank
+    private String idRestaurante;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -32,5 +39,13 @@ public class Menu {
 
     public void setPlato(List<Plato> plato) {
         this.plato = plato;
+    }
+
+    public String getIdRestaurante() {
+        return idRestaurante;
+    }
+
+    public void setIdRestaurante(String idRestaurante) {
+        this.idRestaurante = idRestaurante;
     }
 }

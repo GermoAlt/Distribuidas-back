@@ -1,7 +1,7 @@
 package com.uade.morfando.services;
 
-import com.uade.morfando.entity.Cliente;
+import com.uade.morfando.entities.Cliente;
 
 public interface ClientesService {
-    int login (Cliente cliente) ;
+    Cliente login (String username) ;
 }

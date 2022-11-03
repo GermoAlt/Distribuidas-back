@@ -1,6 +1,6 @@
 package com.uade.morfando.controllers;
 
-import com.uade.morfando.entity.Restaurante;
+import com.uade.morfando.entities.Restaurante;
 import com.uade.morfando.model.ResponseModel;
 import com.uade.morfando.services.RestaurantesService;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,65 +20,24 @@ public class RestauranteController {
     private RestaurantesService restauranteService;
 
     @PostMapping("/")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class)))
-    })
-    public ResponseModel newRestaurante(@RequestBody Restaurante restaurante) {
-        return new ResponseModel(HttpStatus.OK.value(),restaurante);
+    public ResponseEntity<?> newRestaurante(@RequestBody Restaurante restaurante) {
+        return restauranteService.newRestaurant(restaurante);
     }
 
 
-    @GetMapping("/")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class)))
-    })
-    public ResponseModel getRestaurante(@RequestParam int r) {
-        Restaurante restaurante = new Restaurante();
-        return new ResponseModel(HttpStatus.OK.value(),restaurante);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerRestaurant (@PathVariable String id) {
+        return restauranteService.obtenerRestaurant(id);
     }
 
-    @PutMapping("/")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class)))
-    })
-    public ResponseModel updateRestaurante(@RequestBody Restaurante restaurante) {
-        return new ResponseModel(HttpStatus.OK.value(),restaurante);
+    @PatchMapping ("/{id}")
+    public ResponseEntity<?> updateRestaurante(@RequestBody Restaurante restaurante, @PathVariable String id) {
+        return restauranteService.editarRestaurant(restaurante,id);
     }
 
     @DeleteMapping("/")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class))),
-            @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ResponseModel.class)))
-    })
-    public ResponseModel deleteRestaurante(@RequestBody Restaurante restaurante) {
-        return new ResponseModel(HttpStatus.OK.value(),restaurante);
+    public ResponseEntity<?> obtenerByIdUser (@PathVariable String idUser) {
+        return restauranteService.obtenerByIdUser(idUser);
     }
 
 

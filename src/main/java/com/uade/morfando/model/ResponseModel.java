@@ -1,7 +1,7 @@
 package com.uade.morfando.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.uade.morfando.entity.Cliente;
+import com.uade.morfando.entities.Cliente;
 
 public class ResponseModel {
 

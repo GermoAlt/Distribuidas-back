@@ -1,4 +1,4 @@
-package com.uade.morfando.entity;
+package com.uade.morfando.entities;
 
 import org.springframework.data.annotation.Id;
 

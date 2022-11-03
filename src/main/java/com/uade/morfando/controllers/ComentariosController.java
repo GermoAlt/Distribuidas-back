@@ -1,7 +1,6 @@
 package com.uade.morfando.controllers;
 
-import com.uade.morfando.entity.Cliente;
-import com.uade.morfando.entity.Comentario;
+import com.uade.morfando.entities.Comentario;
 import com.uade.morfando.model.ResponseModel;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,10 +1,10 @@
-package com.uade.morfando.entity;
+package com.uade.morfando.entities;
 
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
-public class Cliente {
+public class Cliente extends User{
     @Id
     private int Id;
     private String username;
