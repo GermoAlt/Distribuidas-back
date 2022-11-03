@@ -17,13 +17,13 @@ import java.util.Date;
 public class JwtUtils {
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-  @Value("${bezkoder.app.jwtSecret}")
+  @Value("${app.jwtSecret}")
   private String jwtSecret;
 
-  @Value("${bezkoder.app.jwtExpirationMs}")
+  @Value("${app.jwtExpirationMs}")
   private int jwtExpirationMs;
 
-  @Value("${bezkoder.app.jwtCookieName}")
+  @Value("${app.jwtCookieName}")
   private String jwtCookie;
 
   public String getJwtFromCookies(HttpServletRequest request) {
@@ -35,16 +35,16 @@ public class JwtUtils {
     }
   }
 
-  public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
-    String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-    ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
-    return cookie;
-  }
-
-  public ResponseCookie getCleanJwtCookie() {
-    ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
-    return cookie;
-  }
+//  public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
+//    String jwt = generateTokenFromUsername(userPrincipal.getUsername());
+//    ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
+//    return cookie;
+//  }
+//
+//  public ResponseCookie getCleanJwtCookie() {
+//    ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
+//    return cookie;
+//  }
 
   public String getUserNameFromJwtToken(String token) {
     return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
