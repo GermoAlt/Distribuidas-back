@@ -41,22 +41,9 @@ public class PropietariosController {
     @Autowired
     private PropietariosService propietariosService;
 
-//    @PostMapping("/login")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "201", content = @Content(mediaType = "application/json",
-//                    schema = @Schema(implementation = ResponseModel.class))),
-//            @ApiResponse(responseCode = "400", content = @Content(mediaType = "application/json",
-//                    schema = @Schema(implementation = ResponseModel.class))),
-//            @ApiResponse(responseCode = "403", content = @Content(mediaType = "application/json",
-//                    schema = @Schema(implementation = ResponseModel.class))),
-//            @ApiResponse(responseCode = "500", content = @Content(mediaType = "application/json",
-//                    schema = @Schema(implementation = ResponseModel.class)))
-//    })
-//    public ResponseModel login(@RequestBody Propietario propietario) {
-//        return new ResponseModel(HttpStatus.OK.value(),propietario);
-//    }
 
-    @PostMapping("/signin")
+
+    @PostMapping("/login")
     public ResponseEntity<?> autenticarUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
