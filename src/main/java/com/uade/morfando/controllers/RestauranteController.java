@@ -35,7 +35,7 @@ public class RestauranteController {
         return restauranteService.editarRestaurant(restaurante,id);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{idUser}")
     public ResponseEntity<?> obtenerByIdUser (@PathVariable String idUser) {
         return restauranteService.obtenerByIdUser(idUser);
     }
